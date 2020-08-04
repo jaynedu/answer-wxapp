@@ -1,0 +1,31 @@
+<!--miniprogram/pages/testSAS/testSAS.wxml-->
+<view class='container'>
+
+
+    <swiper class='sheet' current='{{id}}'>
+      <block wx:for="{{qnaire}}">
+        <swiper-item>
+          <form bindsubmit='submit'>
+            <view class='naire'>
+              <view class='question'>{{item.question}}</view>
+              <!--view class='border' /-->
+              <radio-group name='answer' bindchange='radioChange'>
+                <label class='radio'><radio value="A" color='#fcbe39' />{{item.option.a}}</label>
+                <label class='radio'><radio value="B" color='#fcbe39' />{{item.option.b}}</label>
+                <label class='radio'><radio value="C" color='#fcbe39' />{{item.option.c}}</label>
+                <label class='radio'><radio value="D" color='#fcbe39' />{{item.option.d}}</label>
+              </radio-group>
+            </view>
+            <view class='button-group'>
+              <button class='button' hover-class='none' bindtap='lastq' disabled='{{id==0}}'>上一题</button>
+              <button wx:if="{{id<19}}" class='button' hover-class='none' form-type='submit' bindtap='nextq'>下一题</button>
+              <button wx:else class='button' hover-class='none' form-type='submit' bindtap='formSubmit'>提交</button>
+            </view>
+            <view class='id'>{{id+1}}/{{qnaire.length}}</view>
+          </form>
+        </swiper-item>
+      </block>
+    </swiper>
+
+    
+</view>
